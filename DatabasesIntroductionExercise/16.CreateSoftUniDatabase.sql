@@ -1,0 +1,39 @@
+CREATE DATABASE SoftUni
+
+CREATE TABLE Towns 
+(
+	Id INT PRIMARY KEY IDENTITY,
+	[Name] VARCHAR(50)
+)
+
+CREATE TABLE Addresses
+(
+	Id INT PRIMARY KEY IDENTITY,
+	AddressText VARCHAR(50),
+	TownId INT
+)
+
+ALTER TABLE Addresses
+ADD FOREIGN KEY (TownId) REFERENCES Towns(Id);
+
+CREATE TABLE Departments
+(
+	Id INT PRIMARY KEY IDENTITY,
+	[Name] VARCHAR(50)
+)
+
+CREATE TABLE Employees
+(
+	Id INT PRIMARY KEY IDENTITY,
+	FirstName VARCHAR(50),
+	MiddleName VARCHAR(50),
+	LastName VARCHAR(50),
+	JobTitle VARCHAR(30),
+	DepartmentId INT,
+	HireDate DATE,
+	Salary DECIMAL(15, 2),
+	AddressId INT
+)
+
+ALTER TABLE Employees
+ADD FOREIGN KEY (DepartmentId) REFERENCES Departments(Id)
